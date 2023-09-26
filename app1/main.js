@@ -1,6 +1,17 @@
 // storage
 
-var users = []
+var users = [
+    { 
+        name: 'Wendy Darling', 
+        email: 'wendy@darling.com', 
+        password: '123123123' 
+    },
+    { 
+        name: 'Peter Pan', 
+        email: 'peter@pan.com', 
+        password: '123123123' 
+    }
+]
 
 // register
 
@@ -22,31 +33,45 @@ var registerForm = registerView.querySelector('form')
 registerForm.onsubmit = function (event) {
     event.preventDefault()
 
-    var nameInput = registerForm.querySelector('#name')
     var emailInput = registerForm.querySelector('#email')
-    var passwordInput = registerForm.querySelector('#password')
-
-    var name = nameInput.value
     var email = emailInput.value
-    var password = passwordInput.value
+    
+    var userFound = false
 
-    var user = {}
+    for (var i = 0; i < users.length && !userFound; i++){
+        var user = users[i]
 
-    user.name = name
-    user.email = email
-    user.password = password
+        if (user.email === email)
+        userFound = true
+    }
 
-    // TODO check user is new, otherwise show error
+    if (userFound) {
+        alert('User already exists')
+        return
+    }
+    
+        var nameInput = registerForm.querySelector('#name')
+        var passwordInput = registerForm.querySelector('#password')
+        var name = nameInput.value
+        var password = passwordInput.value
 
-    users.push(user)
+        var user = {}
 
-    nameInput.value = ''
-    emailInput.value = ''
-    passwordInput.value = ''
+        user.name = name
+        user.email = email
+        user.password = password
+    
+       
+        users.push(user)
+    
+        nameInput.value = ''
+        emailInput.value = ''
+        passwordInput.value = ''
+    
+        registerView.style.display = 'none'
+        loginView.style.display = 'block'
 
-    registerView.style.display = 'none'
-    loginView.style.display = 'block'
-}
+    }
 
 // login
 
@@ -58,10 +83,52 @@ loginRegisterLink.onclick = function (event) {
 
     loginView.style.display = 'none'
     registerView.style.display = 'block'
-
-    // TODO implement login functionality
 }
+   
+var loginForm = loginView.querySelector('form')
 
+loginForm.onsubmit = function (event) {
+    event.preventDefault()
+
+    var emailInput = loginForm.querySelector('#email')
+
+    var email = emailInput.value
+
+    var foundUser = null
+
+    for (var i = 0; i < users.length && !foundUser; i++) {
+        var user = users[i]
+
+        if (user.email === email)
+            foundUser = user
+    }
+
+    if (!foundUser) {
+        alert('User not found')
+
+        return
+    }
+
+    var passwordInput = loginForm.querySelector('#password')
+
+    var password = passwordInput.value
+
+    if (foundUser.password !== password) {
+        alert('Wrong credentials')
+
+        return
+    }
+
+    emailInput.value = ''
+    passwordInput.value = ''
+
+    var homeTitle = homeView.querySelector('h1')
+
+    homeTitle.innerText = 'Hello, ' + foundUser.name + '!'
+
+    loginView.style.display = 'none'
+    homeView.style.display = 'block'
+}
 // home
 
 var homeView = document.getElementById('home')
