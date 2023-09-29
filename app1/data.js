@@ -33,7 +33,24 @@ function findUserByEmail(email) {
 }
 
 
+function findUserId(email) {
+    for (var i = 0; i < users.length; i++) {
 
+        if (users[i].email === email)
+            
+            return i
+    }
+
+    return null
+}
+
+
+function isDifferent (parameter1, parameter2){
+    if (parameter1 !== parameter2){
+        return true
+    }
+    return false
+}
 
 
 

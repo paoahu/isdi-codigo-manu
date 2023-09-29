@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>App</title>
 </head>
 
@@ -45,10 +46,30 @@
 
     <div id="home">
         <h1>Hello, Home!</h1>
+        <h2>What do you want to do?</h2>
 
+        <button class="logOut-button" aria-label="Log out sesion, returns Login">Logout</button>
+        <button class="changeEmail-button" aria-label="Change email of the user">Change Email</button>
+        <button class="changePassword-button" aria-label="Change password of the user">Change Password</button>
 
-        <!-- TODO implement logout <button>Logout</button> (onclick) -->
+    </div>
 
+    <div id="changeEmail">
+        <h1>You are changing your email!</h1>
+
+        <form>
+            <label for="currentEmail">Write your current Mail</label>
+            <input id="currentEmail" type="text">
+
+            <label for="newEmail">Write your new Mail</label>
+            <input id="newEmail" type="text">
+
+            <button>ChangeMail</button>
+    
+            <!-- <button class="changeEmail" aria-label="Change user mail">Confirm</button>
+            <button class="cancelChangeEmail" aria-label="Cancel change user mail">Cancel</button>-->
+        </form>
+       
         <!-- TODO implement change email panel (form) -->
 
         <!-- TODO implement change password panel (form) -->

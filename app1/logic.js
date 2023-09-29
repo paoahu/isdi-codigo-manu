@@ -11,7 +11,7 @@ function registerUser(name, email, password) {
 
     validateText(name, 'name')
     validateText(email, 'email')
-    validatePassword(password, 'password')
+    validateText(password, 'password')
 
     var user = findUserByEmail(email)
 
@@ -24,7 +24,7 @@ function registerUser(name, email, password) {
 function authenticateUser(email, password) {
 
     validateText(email, 'email')
-    validatePassword(password, 'password')
+    validateText(password, 'password')
 
     var user = findUserByEmail(email)
 
@@ -42,6 +42,22 @@ function retrieveUser(email) {
         throw new Error('user not found')
 
     return user
+}
+
+
+function changeEmail (users, currentEmail, newEmail){
+
+    var checkEmail = isDifferent(currentEmail,newEmail)
+
+    if (checkEmail === false)
+    throw new Error('same email')
+
+    var index = findUserId(currentEmail)
+
+    users[index].email = newEmail
+
+    alert(`Your new email is ${newEmail}`)
+
 }
 /*
 function correctPassword(email,password){

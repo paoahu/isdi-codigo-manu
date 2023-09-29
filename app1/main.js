@@ -1,5 +1,12 @@
+
+
+// register
+var changeEmailView = document.getElementById("changeEmail").style.display = "none"
+
+
 var registerView = document.getElementById("register");
 registerView.style.display = "none";
+
 var registerLoginLink = registerView.querySelector("a");
 registerLoginLink.onclick = function (event) {
   event.preventDefault();
@@ -28,11 +35,15 @@ registerForm.onsubmit = function (event) {
 };
 
 // login
+
 var loginView = document.getElementById("login");
 var loginRegisterLink = loginView.querySelector("a");
+
+
 loginRegisterLink.onclick = function (event) {
   event.preventDefault();
   loginView.style.display = "none";
+  homeView.style.display = "none";
   registerView.style.display = "block";
 };
 var loginForm = loginView.querySelector("form");
@@ -62,3 +73,61 @@ loginForm.onsubmit = function (event) {
 // home
 var homeView = document.getElementById("home");
 homeView.style.display = "none";
+var changeEmailView2 = document.getElementById("changeEmail");
+changeEmailView2.style.display ='none'
+
+
+
+
+var logoutButton = document.querySelector(".logOut-button");
+var changeEmailButton = document.querySelector(".changeEmail-button");
+var changePasswordButton = document.querySelector(".changePassword-button");
+
+
+logoutButton.addEventListener("click", () => {
+  homeView.style.display = "none";
+  loginView.style.display = "block";
+})
+
+  changeEmailButton.addEventListener("click", () => {
+    homeView.style.display = "none";
+    changeEmailView2.style.display = "block"
+})
+
+
+
+
+// change email
+
+
+var mailForm = changeEmailView2.querySelector("form");
+mailForm.onsubmit = function (event) {
+
+  event.preventDefault();
+
+  var currentEmailInput = mailForm.querySelector("#currentEmail");
+  var newEmailInput = mailForm.querySelector("#newEmail");
+  
+  var currentEmail = currentEmailInput.value;
+  var newEmail = newEmailInput.value;
+
+
+  try {
+    retrieveUser(currentEmail)
+    changeEmail (users, currentEmail, newEmail)
+    alert(`ha funcionado`)
+  } catch (error) {
+    alert(error.message);
+  }
+};
+
+/*
+var cancelButton = document.querySelector(".cancelChangeEmail");
+
+cancelButton.addEventListener("click", () => {
+  changeEmailView2.style.display = "none"
+  loginView.style.display = "none";
+  homeView.style.display = "block";
+})
+*/
+
