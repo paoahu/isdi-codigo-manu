@@ -44,6 +44,10 @@ function retrieveUser(email) {
     return user
 }
 
+function compareLoginUser(loginMail, inputMail){
+    
+}
+
 
 function changeEmail (users, currentEmail, newEmail){
 

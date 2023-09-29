@@ -58,6 +58,7 @@ loginForm.onsubmit = function (event) {
 
   try {
     authenticateUser(email, password);
+    index1 = findUserId(email);
     emailInput.value = "";
     passwordInput.value = "";
     var homeTitle = homeView.querySelector("h1");
@@ -113,8 +114,10 @@ mailForm.onsubmit = function (event) {
 
 
   try {
-    retrieveUser(currentEmail)
-    changeEmail (users, currentEmail, newEmail)
+    retrieveUser(currentEmail);
+    index2 = findUserId(currentEmail);
+    isEqual(index1,index2);
+    changeEmail (users, currentEmail, newEmail);
     alert(`ha funcionado`)
   } catch (error) {
     alert(error.message);

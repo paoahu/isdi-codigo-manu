@@ -21,6 +21,9 @@ function createUser(name, email, password) {
     users.push(user)
 }
 
+var index1
+var index2
+
 function findUserByEmail(email) {
     for (var i = 0; i < users.length; i++) {
         var user = users[i]
@@ -53,5 +56,11 @@ function isDifferent (parameter1, parameter2){
 }
 
 
+function isEqual (parameter1, parameter2){
+    if (parameter1 === parameter2){
+        return true
+    }
+    throw new Error('this is not your email')
+}
 
 
