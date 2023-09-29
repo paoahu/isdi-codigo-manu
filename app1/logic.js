@@ -1,44 +1,48 @@
-function checkUserPassword (one, two){
-    if (one === two)
-    return true
+
+/*
+function checkBlankSpaces(parameter){
+    //como decirle a JS que lea lo que escribes
+    var name = arguments[0]
+    if (!parameter.trim().length) throw new Error(name + 'is empty')
 }
+*/
 
+function registerUser(name, email, password) {
 
-function registerUser(name, email, password){
-    var userExists = userExitsByEmail(email)
+    validateText(name, 'name')
+    validateText(email, 'email')
+    validatePassword(password, 'password')
 
-    if (userExists)
-    return false
+    var user = findUserByEmail(email)
+
+    if (user)
+        throw new Error('user already exists')
 
     createUser(name, email, password)
-
-    return true // esto es para comprobar que se ha registrado?
-
 }
 
-var wrongPassword = false
+function authenticateUser(email, password) {
 
+    validateText(email, 'email')
+    validatePassword(password, 'password')
 
-function authenticateUser(email,password){ // tengo los datos de peterpan
+    var user = findUserByEmail(email)
 
-  
-
-    for (var i = 0; i < users.length; i++){
-        var user = userExitsByEmailRetornUser
-    }
-
-    return null// si no lo encuentra me retorna falso
+    if (!user || user.password !== password)
+        throw new Error('wrong credentials')
 }
 
+function retrieveUser(email) {
 
+    validateText(email, 'email')
 
+    var user = findUserByEmail(email)
 
+    if (!user)
+        throw new Error('user not found')
 
-
-function retrieveUser(email){ //recuperar
-
+    return user
 }
-
 /*
 function correctPassword(email,password){
 
