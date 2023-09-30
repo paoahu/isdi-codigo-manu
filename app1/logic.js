@@ -45,7 +45,7 @@ function retrieveUser(email) {
 }
 
 function compareLoginUser(loginMail, inputMail){
-    
+
 }
 
 
@@ -61,6 +61,31 @@ function changeEmail (users, currentEmail, newEmail){
     users[index].email = newEmail
 
     alert(`Your new email is ${newEmail}`)
+
+}
+
+
+
+function changePassword (users, currentPassword, newPassword, repeatNewPassword){
+
+    var checkUserPassword = isUserPassword(currentPassword)
+    if (checkUserPassword === false)
+    throw new Error('this is not your original password')
+
+    var checkPassword = isDifferent(currentPassword,newPassword)
+
+    if (checkPassword === false)
+    throw new Error('same password')
+
+    var checkNewPasswordTwice = isEqual2(newPassword, repeatNewPassword)
+    if (checkNewPasswordTwice === false)
+    throw new Error('please write the same new password')
+
+    var index = index1
+
+    users[index].password = newPassword
+
+    alert(`Your new password is ${newPassword}`)
 
 }
 /*

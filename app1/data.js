@@ -47,6 +47,14 @@ function findUserId(email) {
     return null
 }
 
+function isUserPassword (password){
+    if (users[index1].password === password){
+        return true
+    }
+    return false
+    
+}
+
 
 function isDifferent (parameter1, parameter2){
     if (parameter1 !== parameter2){
@@ -64,3 +72,9 @@ function isEqual (parameter1, parameter2){
 }
 
 
+function isEqual2 (parameter1, parameter2){
+    if (parameter1 === parameter2){
+        return true
+    }
+    return false
+}

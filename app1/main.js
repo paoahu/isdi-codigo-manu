@@ -2,6 +2,7 @@
 
 // register
 var changeEmailView = document.getElementById("changeEmail").style.display = "none"
+var changePasswordView = document.getElementById("changePassword").style.display = "none"
 
 
 var registerView = document.getElementById("register");
@@ -77,6 +78,8 @@ homeView.style.display = "none";
 var changeEmailView2 = document.getElementById("changeEmail");
 changeEmailView2.style.display ='none'
 
+var changePasswordView2 = document.getElementById("changePassword");
+changePasswordView2.style.display ='none'
 
 
 
@@ -96,6 +99,12 @@ logoutButton.addEventListener("click", () => {
 })
 
 
+changePasswordButton.addEventListener("click", () => {
+  homeView.style.display = "none";
+  changeEmailView2.style.display = "none"
+  changePasswordView2.style.display ='block'
+})
+
 
 
 // change email
@@ -114,10 +123,38 @@ mailForm.onsubmit = function (event) {
 
 
   try {
-    retrieveUser(currentEmail);
+    //retrieveUser(currentEmail);
     index2 = findUserId(currentEmail);
     isEqual(index1,index2);
     changeEmail (users, currentEmail, newEmail);
+    alert(`ha funcionado`)
+  } catch (error) {
+    alert(error.message);
+  }
+};
+
+
+
+// change password
+
+var passwordForm = changePasswordView2.querySelector("form");
+passwordForm.onsubmit = function (event) {
+
+  event.preventDefault();
+
+  var currentPasswordInput = passwordForm.querySelector("#currentPassword");
+  var newPasswordInput = passwordForm.querySelector("#newPassword");
+  var repeatNewPasswordInput = passwordForm.querySelector("#repeatNewPassword");
+  
+  var currentPassword = currentPasswordInput.value;
+  var newPassword = newPasswordInput.value;
+  var repeatNewPassword = repeatNewPasswordInput.value;
+
+
+  try {
+
+    //index2 = findUserId(currentEmail);
+    changePassword(users, currentPassword, newPassword, repeatNewPassword)
     alert(`ha funcionado`)
   } catch (error) {
     alert(error.message);
