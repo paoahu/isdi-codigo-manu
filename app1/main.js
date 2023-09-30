@@ -111,6 +111,19 @@ changePasswordButton.addEventListener("click", () => {
 
 
 var mailForm = changeEmailView2.querySelector("form");
+
+var changeEmailHomeLink = changeEmailView2.querySelector("a");
+
+
+changeEmailHomeLink.onclick = function (event) {
+  event.preventDefault();
+  changeEmailView2.style.display = "none"
+  loginView.style.display = "none";
+  registerView.style.display = "none";
+  homeView.style.display = "block";
+  
+};
+
 mailForm.onsubmit = function (event) {
 
   event.preventDefault();
@@ -138,6 +151,19 @@ mailForm.onsubmit = function (event) {
 // change password
 
 var passwordForm = changePasswordView2.querySelector("form");
+
+var changePasswordHomeLink = changePasswordView2.querySelector("a");
+
+
+changePasswordHomeLink.onclick = function (event) {
+  event.preventDefault();
+  changePasswordView2.style.display = "none"
+  loginView.style.display = "none";
+  registerView.style.display = "none";
+  homeView.style.display = "block";
+  
+};
+
 passwordForm.onsubmit = function (event) {
 
   event.preventDefault();
